@@ -1,7 +1,8 @@
 'use strict'
 
 function renderGallery() {
-    var imgUrls = ['imgs/1.jpg','imgs/2.jpg','imgs/3.jpg']
+    var imgUrls = []
+    gImgs.forEach(img => imgUrls.unshift(img.url))
     var elGallery = document.querySelector('.gallery')
     for (var i = 0; i < imgUrls.length; i++) {
         var img = document.createElement('img')

@@ -2,8 +2,9 @@
 
 
 function renderMeme() {
+    var meme = getMeme()
     const image = new Image()
-    image.src = `imgs/${gMeme.selectedImgId}.jpg`
+    image.src = `imgs/${meme.selectedImgId}.jpg`
     image.onload = function () {
         image.width = canvas.width
         image.height = canvas.height
@@ -11,7 +12,7 @@ function renderMeme() {
         gCtx.font = '24px Arial'
         gCtx.fillStyle = 'blue'
         gCtx.textAlign = 'center'
-        gCtx.fillText(gMeme.lines[0].txt, canvas.width / 2, 50)
+        gCtx.fillText(meme.lines[0].txt, canvas.width / 2, 50)
     }
 }
 
