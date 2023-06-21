@@ -20,9 +20,6 @@
 
     <section class="gallery">
 
-
-
-
     </section>
 
 
@@ -31,7 +28,13 @@
             <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
         </div>
 
-        <input type="text" id="text" name="text" placeholder="text" oninput="setLineTxt()" onchange="submitTxt()">
+        <input type="text" id="text" name="text" placeholder="text" oninput="setLineTxt()">
+        <div class="txt-btns">
+            <button class="increase" onclick="increaseTxt()">increase Text</button>
+            <button class="decrease" onclick="decreaseTxt()">decrease Text</button>
+        </div>
+
+        <input type="color" id="color" value="#000000" oninput="changeColor(event)">
         <a href="#" onclick="downloadMeme(this)" download="My-Meme">Download</a>
 
 

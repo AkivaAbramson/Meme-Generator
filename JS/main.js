@@ -12,5 +12,6 @@ function onInit(){
 function logoClicked(){
     hideCanvas()
     showGallery()
+    clearTxtInput()
 }
 
