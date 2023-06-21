@@ -1,0 +1,10 @@
+.canvas {
+    display: block;
+    border: 1px solid black;
+    margin: auto;
+    background-color: #f1f8ff;
+}
+
+.editor {
+    display: none;
+}
