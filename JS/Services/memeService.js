@@ -8,16 +8,16 @@ var gMeme = {
     size: 20,
     color: 'red'
     },
-    {
-    txt: 'bla bla',
-    size: 20,
-    color: 'blue'
-    },
-    {
-        txt: 'love you',
-        size: 20,
-        color: 'green'
-        }
+    // {
+    // txt: 'bla bla',
+    // size: 20,
+    // color: 'blue'
+    // },
+    // {
+    //     txt: 'Shalom',
+    //     size: 20,
+    //     color: 'green'
+    //     }
     ]
    }
 
@@ -46,12 +46,7 @@ function getMeme(){
     return meme
 }
 
-function setLineTxt(){
-    const elInput = document.getElementById('text')
-    const text = elInput.value
-    gMeme.lines[0].txt = text
-    renderMeme()
-}
+
 
 function clearTxtInput(){
     document.getElementById('text').value = ''

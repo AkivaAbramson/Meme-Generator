@@ -29,6 +29,13 @@ function renderMeme() {
     }
 }
 
+function setLineTxt(){
+    const elInput = document.getElementById('text')
+    const text = elInput.value
+    gMeme.lines[gMeme.selectedLineIdx].txt = text
+    renderMeme()
+}
+
 function downloadMeme(elLink) {
     var ElCanvas = document.querySelector('#canvas')
     const data = ElCanvas.toDataURL()
@@ -55,4 +62,35 @@ function decreaseTxt(){
     getFontSize(-5)
     renderMeme()  
 }
+
+function addLine(){
+    if(gMeme.lines.length === 3){
+        alert('too many lines')
+        return
+    }
+    gMeme.lines.push({
+        txt: 'txt',
+        size: 20,
+        color: 'black'
+        })
+    clearTxtInput()
+    renderMeme()  
+}
+
+function switchLine(){
+    clearTxtInput()
+    gMeme.selectedLineIdx ++
+    if(gMeme.selectedLineIdx === gMeme.lines.length){
+        gMeme.selectedLineIdx = 0
+    } 
+    // frameTxt()
+    renderMeme()
+
+}
+
+// function frameTxt(){
+//     const elInput = document.getElementById('text')
+//     const text = elInput.value
+//     text.style.border = '10px solid gray'
+// }
 
