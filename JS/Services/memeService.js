@@ -4,9 +4,10 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
     {
-    txt: 'I sometimes eat Falafel',
+    txt: 'Hello how are you?',
     size: 20,
-    color: 'red'
+    color: 'red',
+    pos:{x: 250, y: 50}
     },
     // {
     // txt: 'bla bla',
@@ -59,9 +60,25 @@ function setImg(url){
 
 }
 
-function getFontSize(x = 0){
-    var size = gTxtSize + x
-    gTxtSize = size
+function changeFontSize(size){
+    gMeme.lines[gMeme.selectedLineIdx].size += size
+    // gMeme.lines[gMeme.selectedLineIdx].size +
     // console.log(gTxtSize)
 
+}
+
+function isHitText(x,y){
+    // TODO: Duplicated code, extract to another function
+    var txtLength = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
+    var txtWidth = txtLength.width;
+
+    for (let line of gMeme.lines) {
+        if (x > line.pos.x && x < line.pos.x + txtWidth) {
+            if (y > line.pos.y - (line.size / 2) && y < line.pos.y + (line.size / 2)) {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
