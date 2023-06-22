@@ -1,3 +1,12 @@
+/* general */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
 .main-screen {
     position: fixed;
     top: 0;
