@@ -1,11 +1,11 @@
+.editor {
+    display: none;
+    position: relative;
+}
 
-/* .canvas-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  } */
+.canvas-container {
+    position: relative;
+}
 
 .canvas {
     display: block;
@@ -16,6 +16,57 @@
     max-height: 100%;
 }
 
-.editor {
-    display: none;
+.panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    
+}
+
+.panel-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+
+
+.panel input[type="text"],
+.panel input[type="color"],
+.panel a,
+.panel button {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #333;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.panel img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.panel a {
+    text-decoration: none;
+    white-space: nowrap;
+    min-width: 5em;
+}
+
+.panel input[type="text"] {
+    min-width: 10em;
+    cursor: text;
 }

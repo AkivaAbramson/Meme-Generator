@@ -12,7 +12,7 @@
     <div class="main-screen" onclick="toggleMenu()"></div>
     <header>
         <a href="#" class="logo">
-            <img src="Logo/logo.png" onclick="logoClicked()">
+            <img src="icons/logo.png" onclick="logoClicked()">
         </a>
         <ul class="nav-links">
             <li><a href="#">Gallery</a></li>
@@ -31,16 +31,20 @@
             <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
         </div>
 
-        <input type="text" id="text" name="text" placeholder="text" oninput="setLineTxt()">
-        <div class="txt-btns">
-            <button class="increase" onclick="increaseTxt()">increase Text</button>
-            <button class="decrease" onclick="decreaseTxt()">decrease Text</button>
-        </div>
-        <button class="add-line" onclick="addLine()">Add Line</button>
-        <button class="switch-line" onclick="switchLine()">Switch Line</button>
+        <div class="panel">
+            <div class="panel-inner">
+                <input type="text" id="text" name="text" placeholder="text" title="insert text" oninput="setLineTxt()">
+                <div class="txt-btns">
+                    <button class="increase" title="Increase Text" onclick="increaseTxt()"><img src="icons/increase font.png" alt=""></button>
+                    <button class="decrease" title="Decrease Text" onclick="decreaseTxt()"><img src="icons/decrease font.png" alt=""></button>
+                </div>
+                <button class="add-line" title="Add Line" onclick="addLine()"><img src="icons/add line.png" alt=""></button>
+                <button class="switch-line" title="Switch Line" onclick="switchLine()"><img src="icons/switch line.png" alt=""></button>
 
-        <input type="color" id="color" value="#000000" oninput="changeColor(event)">
-        <a href="#" onclick="downloadMeme(this)" download="My-Meme">Download</a>
+                <input type="color" id="color" value="#000000" title="Choose Color" oninput="changeColor(event)">
+                <a href="#" onclick="downloadMeme(this)" download="My-Meme">Download</a>
+            </div>
+        </div>
 
 
 

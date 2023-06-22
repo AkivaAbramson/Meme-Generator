@@ -9,11 +9,6 @@ function renderMeme() {
     image.src = `imgs/${meme.selectedImgId}.jpg`
     image.onload = function () {
         gCtx.clearRect(0, 0, canvas.width, canvas.height)
-        // canvas.width = window.innerWidth
-        // canvas.height = window.innerHeight
-
-        // gCtx.clearRect(0, 0, canvas.width, canvas.height)
-        // gCtx.drawImage(image, 0, 0, canvas.width, canvas.height)
         image.width = canvas.width
         image.height = canvas.height
         gCtx.drawImage(image, 0, 0)
