@@ -15,3 +15,6 @@ function logoClicked(){
     clearTxtInput()
 }
 
+function toggleMenu() {
+    document.body.classList.toggle('menu-open');
+}
