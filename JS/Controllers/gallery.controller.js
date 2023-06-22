@@ -38,4 +38,18 @@ function showCanvas(){
     elCanvas.style.display = 'block'
 }
 
+function randomMeme() {
+    var imgId = getRandomInt(1, gImgs.length + 1)
+    gMeme.selectedImgId = imgId
+    var howManyLines = getRandomInt(1,4)
+    for(var i = 0; i< howManyLines; i++){
+        addLine()
+        gMeme.lines[i].txt = getRandomTxt()
+        gMeme.lines[i].size = getRandomInt(10,50)
+        gMeme.lines[i].color = getRandomColor()
+        renderMeme()
+    }
+    hideGallery()
+    showCanvas()
+}
 

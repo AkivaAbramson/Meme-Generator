@@ -21,6 +21,7 @@
   body.menu-open .nav-links {
     box-shadow: 0 0 20px rgb(0 0 0 / 50%);
     translate: 0;
+    /* z-index: 1; */
   }
 
   .nav-links>li {

@@ -5,6 +5,7 @@
     align-items: center;
     background-color: #11a6d3;
     padding: 10px;
+    /* z-index: 1; */
   }
   
   .logo img {
@@ -31,4 +32,5 @@
   .btn-toggle-menu {
     cursor: pointer;
   }
+
   

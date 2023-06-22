@@ -1,6 +1,6 @@
 'use strict'
 // var gColor = 'black'
-var gTxtSize = 20
+// var gTxtSize = 20
 var listenerAdded = false
 
 function renderMeme() {
@@ -13,7 +13,7 @@ function renderMeme() {
         image.height = canvas.height
         gCtx.drawImage(image, 0, 0)
         if (!listenerAdded) {
-            console.log('event')
+            // console.log('event')
             canvas.addEventListener('click', function (ev) {
                 // console.log(ev)
                 console.log('hit:', isHitText(ev.offsetX, ev.offsetY))
@@ -24,11 +24,14 @@ function renderMeme() {
         }
 
         meme.lines.forEach((line, idx) => {
+            gCtx.lineWidth = 0.3
             gCtx.font = line.size + 'px Arial'
             gCtx.fillStyle = meme.lines[idx].color
+            gCtx.strokeStyle = meme.lines[idx].strokeColor
             gCtx.textAlign = 'center'
 
             gCtx.fillText(line.txt, line.pos.x, line.pos.y);
+            gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
             switch (gMeme.selectedLineIdx) {
                 case 0:
                     if (idx === 0)
@@ -76,7 +79,6 @@ function downloadMeme(elLink) {
 
 function changeColor(ev) {
     var color = ev.target.value
-    // gColor = color
     gMeme.lines[gMeme.selectedLineIdx].color = color
     renderMeme()
     // console.log(gMeme)
@@ -98,7 +100,7 @@ function addLine() {
         return
     }
 
-    let pos;
+    var pos
     switch (gMeme.lines.length) {
         case 0:
             pos = { x: canvas.width / 2, y: 50 }
@@ -117,6 +119,7 @@ function addLine() {
         txt: 'txt',
         size: 20,
         color: 'black',
+        strokeColor:getRandomColor(),
         pos
     })
 
@@ -140,11 +143,6 @@ function switchLine() {
 function frameTxt() {
     gCtx.strokeStyle = 'red'
     gCtx.lineWidth = 2
-    // const x = 50
-    // const y = 50
-    // const sideLength = 100
-
-    // gCtx.strokeRect(100, 20, sideLength, sideLength)
     if (gMeme.selectedLineIdx == 0) {
         var txtLength = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
         var txtWidth = txtLength.width
@@ -155,4 +153,13 @@ function frameTxt() {
     }
 
 }
+
+function removeLine(){
+    if(gMeme.selectedLineIdx === 0) return
+    gMeme.lines.splice(gMeme.selectedLineIdx,1)
+    gMeme.selectedLineIdx--
+    renderMeme()
+}
+
+
 

@@ -5,6 +5,7 @@
 
 .canvas-container {
     position: relative;
+    margin: 5px;
 }
 
 .canvas {
@@ -21,7 +22,7 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    
+
 }
 
 .panel-inner {
@@ -34,7 +35,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     margin-top: 20px;
-  }
+}
 
 
 .panel input[type="text"],
@@ -69,4 +70,23 @@
 .panel input[type="text"] {
     min-width: 10em;
     cursor: text;
+}
+
+.share {
+    min-width: 3.5em;
+}
+
+.file-input {
+    display: none;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 6px 12px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    /* background-color: #337ab7; */
+    /* color: fff#; */
+    cursor: pointer;
 }
