@@ -1,4 +1,4 @@
-header {
+/* header {
     background-color: #11a6d3;
     padding: 20px;
     display: flex;
@@ -23,4 +23,33 @@ header {
     margin-right: 10px;
     color: #333;
     text-decoration: none;
+  } */
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #11a6d3;
+    padding: 10px;
   }
+  
+  .logo img {
+    height: 40px;
+  }
+  
+  .nav-links li {
+    display: inline-block;
+    margin-left: 10px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    padding: 5px;
+  }
+  
+  .nav-links a:hover {
+    background-color: #333;
+    color: #f2f2f2;
+  }
+  
