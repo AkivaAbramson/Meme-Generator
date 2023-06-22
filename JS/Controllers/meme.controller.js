@@ -9,12 +9,17 @@ function renderMeme() {
     image.src = `imgs/${meme.selectedImgId}.jpg`
     image.onload = function () {
         gCtx.clearRect(0, 0, canvas.width, canvas.height)
+        // canvas.width = window.innerWidth
+        // canvas.height = window.innerHeight
+
+        // gCtx.clearRect(0, 0, canvas.width, canvas.height)
+        // gCtx.drawImage(image, 0, 0, canvas.width, canvas.height)
         image.width = canvas.width
         image.height = canvas.height
         gCtx.drawImage(image, 0, 0)
-        if(!listenerAdded){
+        if (!listenerAdded) {
             console.log('event')
-            canvas.addEventListener('click', function(ev) {
+            canvas.addEventListener('click', function (ev) {
                 // console.log(ev)
                 console.log('hit:', isHitText(ev.offsetX, ev.offsetY))
                 if (isHitText(ev.offsetX, ev.offsetY))
@@ -38,7 +43,7 @@ function renderMeme() {
                     idx === 1 && renderTxtBorder(line.txt, canvas.width / 2, canvas.height - 20, line.size)
                     break
                 case 2:
-                    if (idx ===2) renderTxtBorder(line.txt, canvas.width / 2, canvas.height / 2, line.size)
+                    if (idx === 2) renderTxtBorder(line.txt, canvas.width / 2, canvas.height / 2, line.size)
                     break
             }
         })
@@ -99,7 +104,7 @@ function addLine() {
     }
 
     let pos;
-    switch(gMeme.lines.length) {
+    switch (gMeme.lines.length) {
         case 0:
             pos = { x: canvas.width / 2, y: 50 }
             break;
@@ -109,7 +114,7 @@ function addLine() {
             break
 
         case 2:
-            pos = {x:canvas.width / 2, y:canvas.height / 2}
+            pos = { x: canvas.width / 2, y: canvas.height / 2 }
             break
     }
 
