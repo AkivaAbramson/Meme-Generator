@@ -13,9 +13,12 @@ function onInit(){
 }
 
 function logoClicked(){
+    renderGallery()
     hideCanvas()
     showGallery()
     clearTxtInput()
+    // onInit()
+
 }
 
 function toggleMenu() {
