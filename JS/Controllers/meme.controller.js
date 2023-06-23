@@ -54,9 +54,11 @@ function addListeners(){
             changeBorder(selectedIndex)
     })
     canvas.addEventListener('touchstart', function (ev) {
-        var selectedIndex = isHitText(ev.offsetX, ev.offsetY)
-        if (selectedIndex >= 0)
-            changeBorder(selectedIndex)
+        var touch = ev.touches[0]
+        var selectedIndex = isHitText(touch.pageX - canvas.offsetLeft, touch.pageY - canvas.offsetTop)
+        if (selectedIndex >= 0) {
+          changeBorder(selectedIndex)
+        }
     })
 }
 
