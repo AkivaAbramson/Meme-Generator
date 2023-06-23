@@ -1,11 +1,13 @@
 .editor {
+    /* background-color: aquamarine; */
     display: none;
     position: relative;
 }
 
 .canvas-container {
+    /* background-color: aquamarine; */
     position: relative;
-    margin: 5px;
+    margin-top: 5px;
 }
 
 .canvas {
@@ -22,15 +24,14 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-
 }
 
 .panel-inner {
+    background-color: darkgrey;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    background-color: #f2f2f2;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -45,8 +46,6 @@
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 3px;
-    background-color: #fff;
-    color: #333;
     margin: 5px;
     width: 30px;
     height: 30px;
@@ -54,6 +53,10 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
+}
+.panel input[type="color"]:hover,
+.panel button:not(.share):hover {
+    border-radius: 50%;
 }
 
 .panel img {
@@ -65,6 +68,8 @@
     text-decoration: none;
     white-space: nowrap;
     min-width: 5em;
+    background-color: rgb(193, 13, 193);
+    color: white;
 }
 
 .panel input[type="text"] {
@@ -74,6 +79,8 @@
 
 .share {
     min-width: 3.5em;
+    background-color: rgb(49, 49, 246);
+    color: white;
 }
 
 .file-input {
@@ -83,10 +90,32 @@
 .file-label {
     display: inline-block;
     padding: 6px 12px;
-    background-color: #fff;
+    background-color: rgb(49, 49, 246);
+    color: white;
     border: 1px solid #ccc;
     border-radius: 3px;
     /* background-color: #337ab7; */
     /* color: fff#; */
     cursor: pointer;
+}
+
+.increase, .decrease{
+    background-color:beige;
+    
+}
+
+.add-line{
+    background-color: green;
+}
+
+.remove-line{
+    background-color: #c80e0e;
+}
+
+.switch-line{
+    background-color: green;
+}
+
+.color{
+    background-color: orange;
 }

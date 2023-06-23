@@ -2,8 +2,9 @@
 // var gColor = 'black'
 // var gTxtSize = 20
 var listenerAdded = false
+var gDownloadClicked = null
 
-function renderMeme() {
+function renderMeme(drawBorder = true) {
     var meme = getMeme()
     const image = new Image()
     image.src = `imgs/${meme.selectedImgId}.jpg`
@@ -13,13 +14,12 @@ function renderMeme() {
         image.height = canvas.height
         gCtx.drawImage(image, 0, 0)
         if (!listenerAdded) {
-            // console.log('event')
             canvas.addEventListener('click', function (ev) {
-                // console.log(ev)
-                console.log('hit:', isHitText(ev.offsetX, ev.offsetY))
-                if (isHitText(ev.offsetX, ev.offsetY))
-                    alert('Hit text');
+                var selectedIndex = isHitText(ev.offsetX, ev.offsetY)
+                if (selectedIndex >= 0)
+                    changeBorder(selectedIndex)
             })
+
             listenerAdded = true
         }
 
@@ -30,22 +30,33 @@ function renderMeme() {
             gCtx.strokeStyle = meme.lines[idx].strokeColor
             gCtx.textAlign = 'center'
 
-            gCtx.fillText(line.txt, line.pos.x, line.pos.y);
-            gCtx.strokeText(line.txt, line.pos.x, line.pos.y);
+            gCtx.fillText(line.txt, line.pos.x, line.pos.y)
+            gCtx.strokeText(line.txt, line.pos.x, line.pos.y)
+            
+            if (!drawBorder) return;
             switch (gMeme.selectedLineIdx) {
                 case 0:
                     if (idx === 0)
-                        renderTxtBorder(line.txt, canvas.width / 2, 50, line.size)
+                        renderTxtBorder(line.txt, line.pos.x, line.pos.y, line.size)
                     break
                 case 1:
-                    idx === 1 && renderTxtBorder(line.txt, canvas.width / 2, canvas.height - 20, line.size)
+                    idx === 1 && renderTxtBorder(line.txt, line.pos.x, line.pos.y, line.size)
                     break
                 case 2:
-                    if (idx === 2) renderTxtBorder(line.txt, canvas.width / 2, canvas.height / 2, line.size)
+                    if (idx === 2) renderTxtBorder(line.txt, line.pos.x, line.pos.y, line.size)
                     break
             }
         })
+
+        if(gDownloadClicked) downloadMeme()
     }
+}
+
+function changeBorder(idx){
+    gMeme.selectedLineIdx = idx
+    setTxtInput(gMeme.lines[idx].txt)
+
+    renderMeme()
 }
 
 
@@ -68,13 +79,22 @@ function setLineTxt() {
     renderMeme()
 }
 
-function downloadMeme(elLink) {
-    var ElCanvas = document.querySelector('#canvas')
-    const data = ElCanvas.toDataURL()
-    elLink.href = data
-    elLink.download = 'My-Meme'
-    clearTxtInput()
+function triggerDownload() {
+    gDownloadClicked = true
+    renderMeme(false)
+}
 
+function downloadMeme() {
+    var ElCanvas = document.querySelector('#canvas')
+
+    const data = ElCanvas.toDataURL()
+    const downloadRef = document.createElement('a')
+    downloadRef.href = data
+    downloadRef.download = 'My-Meme'
+    downloadRef.click()
+
+    gDownloadClicked = false
+    renderMeme()
 }
 
 function changeColor(ev) {
@@ -100,20 +120,18 @@ function addLine() {
         return
     }
 
-    var pos
-    switch (gMeme.lines.length) {
-        case 0:
-            pos = { x: canvas.width / 2, y: 50 }
-            break;
-
-        case 1:
-            pos = { x: canvas.width / 2, y: canvas.height - 20 }
-            break
-
-        case 2:
-            pos = { x: canvas.width / 2, y: canvas.height / 2 }
-            break
+    let allOccupiedPosY = []
+    for (const line of gMeme.lines) {
+        allOccupiedPosY.push(line.pos.y)
     }
+
+    let pos = null
+    if (!Number.isInteger(allOccupiedPosY.find(element => element === 50)))
+        pos = { x: canvas.width / 2, y: 50 }
+    else if (!Number.isInteger(allOccupiedPosY.find(element => element === canvas.height - 20)))
+        pos = { x: canvas.width / 2, y: canvas.height - 20 }
+    else if (!Number.isInteger(allOccupiedPosY.find(element => element === canvas.height / 2)))
+        pos = { x: canvas.width / 2, y: canvas.height / 2 }
 
     gMeme.lines.push({
         txt: 'txt',
@@ -124,12 +142,12 @@ function addLine() {
     })
 
     gMeme.selectedLineIdx++
-    clearTxtInput()
+    setTxtInput()
     renderMeme()
 }
 
 function switchLine() {
-    clearTxtInput()
+    setTxtInput()
     gMeme.selectedLineIdx++
     if (gMeme.selectedLineIdx === gMeme.lines.length) {
         gMeme.selectedLineIdx = 0
@@ -155,7 +173,7 @@ function frameTxt() {
 }
 
 function removeLine(){
-    if(gMeme.selectedLineIdx === 0) return
+    if(gMeme.selectedLineIdx === 0 && gMeme.lines.length === 1) return
     gMeme.lines.splice(gMeme.selectedLineIdx,1)
     gMeme.selectedLineIdx--
     renderMeme()

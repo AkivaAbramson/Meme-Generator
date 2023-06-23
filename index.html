@@ -16,7 +16,7 @@
         </a>
         <!-- <button class="random-meme" onclick="randomMeme()">im flexible </button> -->
         <ul class="nav-links">
-            <li><a href="#">Gallery</a></li>
+            <li><a href="#" onclick="logoClicked()">Gallery</a></li>
             <li><a class="random-meme" onclick="randomMeme()">Random Meme</a></li>
             <li><a href="#">About</a></li>
         </ul>
@@ -41,10 +41,10 @@
                     <button class="decrease" title="Decrease Text" onclick="decreaseTxt()"><img src="icons/decrease font.png" alt=""></button>
                 </div>
                 <button class="add-line" title="Add Line" onclick="addLine()"><img src="icons/add line.png" alt=""></button>
-                <button class="remove-line" title="Delete Line" onclick="removeLine()"><img src="icons/delete.png" alt=""></button>
                 <button class="switch-line" title="Switch Line" onclick="switchLine()"><img src="icons/switch line.png" alt=""></button>
-                <input type="color" id="color" value="#000000" title="Choose Color" oninput="changeColor(event)">
-                <a href="#" onclick="downloadMeme(this)" download="My-Meme">Download</a>
+                <button class="remove-line" title="Delete Line" onclick="removeLine()"><img src="icons/delete.png" alt=""></button>
+                <input class="color" type="color" id="color" value="#000000" title="Choose Color" oninput="changeColor(event)">
+                <a onclick="triggerDownload()">Download</a>
                 <button class="share" title="Share on Facebook" onclick="onUploadImg()">Share!</button>
                 <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)"accept="image/*" id="fileInput"/>
                 <label for="fileInput" class="file-label">Get your own Meme!</label>

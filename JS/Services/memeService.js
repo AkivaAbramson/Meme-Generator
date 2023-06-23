@@ -50,8 +50,8 @@ function getMeme() {
 
 
 
-function clearTxtInput() {
-    document.getElementById('text').value = ''
+function setTxtInput(value = '') {
+    document.getElementById('text').value = value;
 }
 
 function setImg(url) {
@@ -70,17 +70,19 @@ function changeFontSize(size) {
 
 function isHitText(x, y) {
     var txtLength = gCtx.measureText(gMeme.lines[gMeme.selectedLineIdx].txt)
-    var txtWidth = txtLength.width;
+    var txtWidth = txtLength.width
 
-    for (let line of gMeme.lines) {
-        if (x > line.pos.x && x < line.pos.x + txtWidth) {
+    var returnIndex = -1;
+    gMeme.lines.forEach((line, i) => {
+        if (x > line.pos.x - (txtWidth / 2) && x < line.pos.x + (txtWidth / 2)) {
             if (y > line.pos.y - (line.size / 2) && y < line.pos.y + (line.size / 2)) {
-                return true;
+                returnIndex = i
+                return
             }
         }
-    }
+    })
 
-    return false;
+    return returnIndex;
 }
 
 function onUploadImg() {
