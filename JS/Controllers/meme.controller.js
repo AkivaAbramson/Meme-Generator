@@ -14,12 +14,7 @@ function renderMeme(drawBorder = true) {
         image.height = canvas.height
         gCtx.drawImage(image, 0, 0)
         if (!listenerAdded) {
-            canvas.addEventListener('click', function (ev) {
-                var selectedIndex = isHitText(ev.offsetX, ev.offsetY)
-                if (selectedIndex >= 0)
-                    changeBorder(selectedIndex)
-            })
-
+            addListeners()
             listenerAdded = true
         }
 
@@ -50,6 +45,19 @@ function renderMeme(drawBorder = true) {
 
         if(gDownloadClicked) downloadMeme()
     }
+}
+
+function addListeners(){
+    canvas.addEventListener('click', function (ev) {
+        var selectedIndex = isHitText(ev.offsetX, ev.offsetY)
+        if (selectedIndex >= 0)
+            changeBorder(selectedIndex)
+    })
+    canvas.addEventListener('touchstart', function (ev) {
+        var selectedIndex = isHitText(ev.offsetX, ev.offsetY)
+        if (selectedIndex >= 0)
+            changeBorder(selectedIndex)
+    })
 }
 
 function changeBorder(idx){
