@@ -13,3 +13,6 @@
     margin: 5px 5px 0 5px;
 }
 
+.gallery img:hover{
+    border: 10px blue;
+}

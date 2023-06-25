@@ -45,4 +45,26 @@
   .btn-toggle-menu {
     display: none;
   }
+
+  .container {
+    flex-direction: row;
+    justify-content: center;
+    
+  }
+  
+  .canvas-container {
+    /* flex: 2; */
+    margin-top: 5px;
+  }
+
+  .panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    width: 150px;
+    height: 400px;
+  }
+
 }

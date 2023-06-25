@@ -73,6 +73,7 @@ function changeBorder(idx){
 function renderTxtBorder(txt, xPaint, yPaint, fontSize) {
     var textSizes = gCtx.measureText(txt)
     // console.log(textSizes)
+    gCtx.lineWidth = 1.2
     gCtx.strokeStyle = 'Black'
 
     var calculatedX = xPaint - textSizes.width / 2
@@ -126,7 +127,7 @@ function decreaseTxt() {
 
 function addLine() {
     if (gMeme.lines.length === 3) {
-        alert('too many lines')
+        // alert('too many lines')
         return
     }
 

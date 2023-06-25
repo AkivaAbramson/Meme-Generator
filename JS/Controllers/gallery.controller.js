@@ -26,7 +26,7 @@ function hideGallery(){
 }
 function showGallery(){
     var elGallery = document.querySelector('.gallery')
-    elGallery.style.display = 'block'
+    elGallery.style.display = 'grid'
 }
 
 function hideCanvas(){

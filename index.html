@@ -29,26 +29,30 @@
 
 
     <section class="editor">
-        <div class="canvas-container">
-            <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
-        </div>
+        <div class="container">
 
-        <div class="panel">
-            <div class="panel-inner">
-                <input type="text" id="text" name="text" placeholder="text" title="insert text" oninput="setLineTxt()">
-                <div class="txt-btns">
-                    <button class="increase" title="Increase Text" onclick="increaseTxt()"><img src="icons/increase font.png" alt=""></button>
-                    <button class="decrease" title="Decrease Text" onclick="decreaseTxt()"><img src="icons/decrease font.png" alt=""></button>
-                </div>
-                <button class="add-line" title="Add Line" onclick="addLine()"><img src="icons/add line.png" alt=""></button>
-                <button class="switch-line" title="Switch Line" onclick="switchLine()"><img src="icons/switch line.png" alt=""></button>
-                <button class="remove-line" title="Delete Line" onclick="removeLine()"><img src="icons/delete.png" alt=""></button>
-                <input class="color" type="color" id="color" value="#000000" title="Choose Color" oninput="changeColor(event)">
-                <a onclick="triggerDownload()">Download</a>
-                <button class="share" title="Share on Facebook" onclick="onUploadImg()">Share!</button>
-                <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)"accept="image/*" id="fileInput"/>
-                <label for="fileInput" class="file-label">Get your own Meme!</label>
+            <div class="canvas-container">
+                <canvas class="canvas" id="canvas" width="500" height="500"></canvas>
             </div>
+            
+            <div class="panel">
+                <div class="panel-inner">
+                    <input type="text" id="text" name="text" placeholder="text" title="insert text" oninput="setLineTxt()">
+                    <div class="txt-btns">
+                        <button class="increase" title="Increase Text" onclick="increaseTxt()"><img src="icons/increase font.png" alt=""></button>
+                        <button class="decrease" title="Decrease Text" onclick="decreaseTxt()"><img src="icons/decrease font.png" alt=""></button>
+                    </div>
+                    <button class="add-line" title="Add Line" onclick="addLine()"><img src="icons/add line.png" alt=""></button>
+                    <button class="switch-line" title="Switch Line" onclick="switchLine()"><img src="icons/switch line.png" alt=""></button>
+                    <button class="remove-line" title="Delete Line" onclick="removeLine()"><img src="icons/delete.png" alt=""></button>
+                    <input class="color" type="color" id="color" value="#000000" title="Choose Color" oninput="changeColor(event)">
+                    <a onclick="triggerDownload()">Download</a>
+                    <button class="share" title="Share on Facebook" onclick="onUploadImg()">Share!</button>
+                    <input type="file" class="file-input btn" name="image" onchange="onImgInput(event)"accept="image/*" id="fileInput"/>
+                    <label for="fileInput" class="file-label">Make Meme!</label>
+                </div>
+            </div>
+
         </div>
 
 
